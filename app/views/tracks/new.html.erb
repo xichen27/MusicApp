@@ -1,0 +1,33 @@
+<form action="<%=tracks_url%>" method="POST">
+
+	
+	<label for="track_name">Track Name</label>
+	<input name="track[name]" id="track_name" type="text">
+	<br>
+
+	<label for="album_name">Album Name</label>
+	<select name="track[album_id]" id="album_name">
+		<%Album.all.each do |album|%>
+		<option value="<%=album.id%>"
+			<%="selected" if @track.album = album %>>
+			<%=album.name%></option>
+		<%end%>
+	</select>
+	<br>
+
+	<% Track::TTYPE.each do |ttype| %>
+		<label>
+			<input type="radio" name="track[ttype]", value="<%=ttype%>"
+			<%="checked" if @track.ttype = ttype %>>
+			<%= ttype %>
+		</label>
+	<% end %>
+	<br>
+
+	<label for="track_lyrics">Lyrics</label>
+	<textarea name="track[lyrics]" id="track_lyrics"></textarea>
+	<br>
+
+	<input type="submit" value="Create Track">
+</form>
+

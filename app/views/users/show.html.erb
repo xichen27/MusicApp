@@ -1,0 +1,12 @@
+<h1>Nice to meet you, <%=current_user.email%></h1>
+
+ <form action="<%=session_url%>" method="POST">
+ 	<input type="hidden" name="_method" value="DELETE">
+
+	<input type="submit" value="Log out!">
+</form>
+
+<!-- link to the new_band page to create band-->
+ <form action="<%=bands_url%>" method="POST">
+	<input type="submit" value="Create a new band.">
+</form>

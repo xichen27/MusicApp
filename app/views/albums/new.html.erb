@@ -1,0 +1,26 @@
+<form action="<%=albums_url%>" method="POST">
+
+	
+	<label for="album_name">Album Name</label>
+	<input name="album[name]" id="album_name" type="text">
+	<br>
+
+	<label for="band_name">Band Name</label>
+	<select name="album[band_id]" id="band_name">
+		<%Band.all.each do |band|%>
+		<option value="<%=band.id%>"
+			<%="selected" if @album.band = band %>>
+			<%=band.name%></option>
+		<%end%>
+	</select>
+	<br>
+
+	<% Album::TTYPE.each do |ttype| %>
+		<label>
+			<input type="radio" name="album[ttype]", value="<%=ttype%>">
+			<%= ttype %>
+		</label>
+	<% end %>
+	<br>
+	<input type="submit" value="Create Album">
+</form>
